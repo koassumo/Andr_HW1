@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Погодное приложение</string>
+    <string name="region">Москва, Россия</string>
+    <string name="region_en">Moscow, Russia</string>
+    <string name="temperature">+6</string>
+    <string name="switch_to_english">english</string>
+    <string name="switch_to_russian">русский</string>
 </resources>
