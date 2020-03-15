@@ -1,8 +1,6 @@
 package ru.geekbrains.android1.hw1;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -23,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        regionTextView = findViewById(R.id.textView6);
+        regionTextView = findViewById(R.id.textViewSity);
         switchEnRu = findViewById(R.id.switch1);
 
     }
@@ -31,18 +29,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void setOnSwitchChanged() {
 
-            switchEnRu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    String text;
-                    if(isChecked) {
-                        text = getString(R.string.region);
-                    } else {
-                        text = getString(R.string.region_en);
-                    }
-                    regionTextView.setText(text);
+        switchEnRu.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                String text;
+                if (isChecked) {
+                    text = getString(R.string.region);
+                } else {
+                    text = getString(R.string.region_en);
                 }
-            });
+                regionTextView.setText(text);
+            }
+        });
     }
 
 }
