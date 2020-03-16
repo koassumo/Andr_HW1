@@ -34,7 +34,7 @@
         android:id="@+id/textViewPressure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="720 мм/рт ст"
+        android:text="@string/atmo_pressure"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageViewSkyClear"
         app:layout_constraintTop_toTopOf="@+id/textView7" />
@@ -82,15 +82,7 @@
         app:layout_constraintStart_toStartOf="@+id/imageViewWeatherMap"
         app:layout_constraintTop_toTopOf="@+id/imageViewWeatherMap" />
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="@string/switch_to_english"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+
 
     <ScrollView
         android:layout_width="409dp"

@@ -7,61 +7,82 @@
     tools:context=".SitySelect">
 
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/textViewSitySelectTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Выбор города"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/textViewSitySelectChoose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="22dp"
+        android:maxLines="1"
+        android:ems="12"
+        android:maxLength="15"
+        android:textSize="25sp"
+        android:hint="Введите название города"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSitySelectTitle" />
 
-        <LinearLayout
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="1" />
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="2" />
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="3" />
-        </LinearLayout>
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="22dp"
+        android:entries="@array/list_of_towns"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSitySelectChoose" />
 
+    <CheckBox
+        android:id="@+id/checkBoxWind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="132dp"
+        android:checked="true"
+        android:text="скорость ветра"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/button6"
-                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="4" />
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="5" />
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="6" />
-        </LinearLayout>
+    <CheckBox
+        android:id="@+id/checkBoxAtmoPressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="20dp"
+        android:checked="true"
+        android:text="атмосферное давление"
+        app:layout_constraintBottom_toTopOf="@+id/checkBoxWind"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/button10"
-                android:layout_width="match_parent" android:layout_height="match_parent"
-                android:layout_gravity="bottom"
-                android:text="0" />
-        </LinearLayout>
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textViewAtmoInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/atmo_pressure"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBoxAtmoPressure"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/checkBoxAtmoPressure" />
+
+    <TextView
+        android:id="@+id/textViewWindInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/wind"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBoxWind"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/checkBoxWind" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
