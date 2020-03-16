@@ -6,13 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".SitySelect">
 
-
     <TextView
         android:id="@+id/textViewSitySelectTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Выбор города"
+        android:text="@string/textview_town_select_title"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +27,7 @@
         android:ems="12"
         android:maxLength="15"
         android:textSize="25sp"
-        android:hint="Введите название города"
+        android:hint="@string/edittext_town_hint"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewSitySelectTitle" />
 
@@ -49,7 +48,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="132dp"
         android:checked="true"
-        android:text="скорость ветра"
+        android:text="@string/checkbox_wind_title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -60,7 +59,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="20dp"
         android:checked="true"
-        android:text="атмосферное давление"
+        android:text="@string/checkbox_atmo_title"
         app:layout_constraintBottom_toTopOf="@+id/checkBoxWind"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -83,6 +82,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/checkBoxWind"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/checkBoxWind" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

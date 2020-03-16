@@ -32,9 +32,7 @@ public class SitySelect extends AppCompatActivity {
         textViewWindInfo = findViewById(R.id.textViewWindInfo);
     }
 
-
     private void setOnСheckBoxAtmoPressure() {
-
         checkBoxAtmoPressure.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -50,7 +48,6 @@ public class SitySelect extends AppCompatActivity {
     }
 
     private void setOnСheckBoxWind() {
-
         checkBoxWind.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

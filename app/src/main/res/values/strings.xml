@@ -17,6 +17,10 @@
     <string name="atmo_pressure_null"></string>
     <string name="wind">3 м/с</string>
     <string name="wind_null"></string>
+    <string name="edittext_town_hint">Введите название города</string>
+    <string name="textview_town_select_title">Выбор города</string>
+    <string name="checkbox_wind_title">скорость ветра</string>
+    <string name="checkbox_atmo_title">атмосферное давление</string>
     <string-array name="list_of_towns">
         <item>Москва, Россия</item>
         <item>Лондон, Великобритания</item>

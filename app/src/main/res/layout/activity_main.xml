@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <TextView
         android:id="@+id/textViewSity"
         android:layout_width="wrap_content"
@@ -28,7 +27,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewSity"
         app:srcCompat="@drawable/sun_cloud" />
-
 
     <TextView
         android:id="@+id/textViewPressure"
@@ -81,8 +79,6 @@
         app:layout_constraintEnd_toEndOf="@+id/imageViewWeatherMap"
         app:layout_constraintStart_toStartOf="@+id/imageViewWeatherMap"
         app:layout_constraintTop_toTopOf="@+id/imageViewWeatherMap" />
-
-
 
     <ScrollView
         android:layout_width="409dp"
@@ -139,6 +135,5 @@
                 android:text="@string/plus_7_days" />
         </LinearLayout>
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
