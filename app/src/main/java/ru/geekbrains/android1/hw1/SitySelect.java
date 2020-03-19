@@ -24,9 +24,6 @@ public class SitySelect extends AppCompatActivity {
     private CheckBox checkBoxWind;
     private TextView textViewWindInfo;
 
-    private Button buttonTTTT;
-    private TextView textViewTTTT;
-    private final String counterDataKey = "counterDataKey";
     private final String editTextTownKey = "editTextTownKey";
     private final String spinnerTownKey = "spinnerTownKey";
     private final String checkAtmoKey = "checkAtmoKey";
@@ -39,8 +36,6 @@ public class SitySelect extends AppCompatActivity {
         initViews();
         setOnСheckBoxAtmoPressure();
         setOnСheckBoxWind();
-
-        initIncreaseBtnBehavior();
 
         String instanceState;
         if (savedInstanceState == null) {
@@ -61,20 +56,6 @@ public class SitySelect extends AppCompatActivity {
 
         checkBoxWind = findViewById(R.id.checkBoxWind);
         textViewWindInfo = findViewById(R.id.textViewWindInfo);
-
-        buttonTTTT = findViewById(R.id.button_tt);
-        textViewTTTT = findViewById(R.id.textView_TT);
-    }
-
-    private void initIncreaseBtnBehavior() {
-        buttonTTTT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int counterValue = Integer.parseInt(textViewTTTT.getText().toString());
-                String newTextValue = String.valueOf(++counterValue);
-                textViewTTTT.setText(newTextValue);
-            }
-        });
     }
 
     private void setOnСheckBoxAtmoPressure() {
@@ -133,8 +114,6 @@ public class SitySelect extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "onSaveInstanceState()", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onSaveInstanceState()");
 
-        saveInstanceState.putString(counterDataKey, textViewTTTT.getText().toString());
-
         saveInstanceState.putString(editTextTownKey, editTextTown.toString());
         saveInstanceState.putString(spinnerTownKey, (String) spinnerTown.getSelectedItem());
         saveInstanceState.putBoolean(checkAtmoKey, checkBoxAtmoPressure.isChecked());
@@ -147,10 +126,8 @@ public class SitySelect extends AppCompatActivity {
     protected void onRestoreInstanceState(@NonNull Bundle saveInstanceState){
         super.onRestoreInstanceState(saveInstanceState);
 
-
-        editTextTown.setText(saveInstanceState.getString(editTextTownKey));
+        editTextTown.setText(saveInstanceState.getString(editTextTownKey)); // выдает странности после поворота
         // spinnerTown. ---- не нашел set метод ----- :(     (saveInstanceState.getString(spinnerTownKey));
-        saveInstanceState.putString(spinnerTownKey, spinnerTown.getSelectedItem().toString());
         checkBoxAtmoPressure.setChecked(saveInstanceState.getBoolean(checkAtmoKey));
         checkBoxWind.setChecked(saveInstanceState.getBoolean(checkWindKey));
 
