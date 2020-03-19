@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SitySelect extends AppCompatActivity {
 
     private static final String TAG = "SitySelect";
+    private TextView editTextTown;
+    private Spinner spinnerTown;
     private CheckBox checkBoxAtmoPressure;
     private TextView textViewAtmoInfo;
 
@@ -24,6 +27,10 @@ public class SitySelect extends AppCompatActivity {
     private Button buttonTTTT;
     private TextView textViewTTTT;
     private final String counterDataKey = "counterDataKey";
+    private final String editTextTownKey = "editTextTownKey";
+    private final String spinnerTownKey = "spinnerTownKey";
+    private final String checkAtmoKey = "checkAtmoKey";
+    private final String checkWindKey = "checkWindKey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +53,9 @@ public class SitySelect extends AppCompatActivity {
     }
 
     private void initViews() {
+        editTextTown = findViewById(R.id.textViewSitySelectChoose);
+        spinnerTown = findViewById(R.id.spinnerTown);
+
         checkBoxAtmoPressure = findViewById(R.id.checkBoxAtmoPressure);
         textViewAtmoInfo = findViewById(R.id.textViewAtmoInfo);
 
@@ -119,25 +129,32 @@ public class SitySelect extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestoreInstanceState(@NonNull Bundle saveInstanceState){
-        super.onRestoreInstanceState(saveInstanceState);
-        //DataContainer container = (DataContainer)saveInstanceState.getSerializable(counterDataKey);
+    protected void onSaveInstanceState(@NonNull Bundle saveInstanceState){
+        Toast.makeText(getApplicationContext(), "onSaveInstanceState()", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onSaveInstanceState()");
 
-        String text = saveInstanceState.getString(counterDataKey, "0");
-        textViewTTTT.setText(text);
+        saveInstanceState.putString(counterDataKey, textViewTTTT.getText().toString());
 
-        Toast.makeText(getApplicationContext(), "Повторный запуск!! - onRestoreInstanceState()", Toast.LENGTH_SHORT).show();
+        saveInstanceState.putString(editTextTownKey, editTextTown.toString());
+        saveInstanceState.putString(spinnerTownKey, (String) spinnerTown.getSelectedItem());
+        saveInstanceState.putBoolean(checkAtmoKey, checkBoxAtmoPressure.isChecked());
+        saveInstanceState.putBoolean(checkWindKey, checkBoxWind.isChecked());
+
+        super.onSaveInstanceState(saveInstanceState);
     }
 
     @Override
-    protected void onSaveInstanceState(@NonNull Bundle saveInstanceState){
-        Toast.makeText(getApplicationContext(), "заебись - onSaveInstanceState()", Toast.LENGTH_SHORT).show();
+    protected void onRestoreInstanceState(@NonNull Bundle saveInstanceState){
+        super.onRestoreInstanceState(saveInstanceState);
 
-        String text = textViewTTTT.getText().toString();
-        saveInstanceState.putString(counterDataKey, text);
 
-        super.onSaveInstanceState(saveInstanceState);
+        editTextTown.setText(saveInstanceState.getString(editTextTownKey));
+        // spinnerTown. ---- не нашел set метод ----- :(     (saveInstanceState.getString(spinnerTownKey));
+        saveInstanceState.putString(spinnerTownKey, spinnerTown.getSelectedItem().toString());
+        checkBoxAtmoPressure.setChecked(saveInstanceState.getBoolean(checkAtmoKey));
+        checkBoxWind.setChecked(saveInstanceState.getBoolean(checkWindKey));
 
-//        saveInstanceState.putSerializable(counterDataKey, DataContainer.getInstance());
+        Toast.makeText(getApplicationContext(), "Повторный запуск!! - onRestoreInstanceState()", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "Повторный запуск!! - onRestoreInstanceState()");
     }
 }
