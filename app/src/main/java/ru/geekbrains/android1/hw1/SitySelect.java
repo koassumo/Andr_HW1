@@ -114,8 +114,8 @@ public class SitySelect extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "onSaveInstanceState()", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onSaveInstanceState()");
 
-        saveInstanceState.putString(editTextTownKey, editTextTown.toString());
-        saveInstanceState.putString(spinnerTownKey, (String) spinnerTown.getSelectedItem());
+        saveInstanceState.putString(editTextTownKey, editTextTown.getText().toString());
+        saveInstanceState.putInt(spinnerTownKey, spinnerTown.getSelectedItemPosition());
         saveInstanceState.putBoolean(checkAtmoKey, checkBoxAtmoPressure.isChecked());
         saveInstanceState.putBoolean(checkWindKey, checkBoxWind.isChecked());
 
@@ -126,8 +126,8 @@ public class SitySelect extends AppCompatActivity {
     protected void onRestoreInstanceState(@NonNull Bundle saveInstanceState){
         super.onRestoreInstanceState(saveInstanceState);
 
-        editTextTown.setText(saveInstanceState.getString(editTextTownKey)); // выдает странности после поворота
-        // spinnerTown. ---- не нашел set метод ----- :(     (saveInstanceState.getString(spinnerTownKey));
+        editTextTown.setText(saveInstanceState.getString(editTextTownKey));
+        spinnerTown.setSelection(saveInstanceState.getInt(spinnerTownKey));
         checkBoxAtmoPressure.setChecked(saveInstanceState.getBoolean(checkAtmoKey));
         checkBoxWind.setChecked(saveInstanceState.getBoolean(checkWindKey));
 
