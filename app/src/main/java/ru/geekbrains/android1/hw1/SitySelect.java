@@ -1,5 +1,6 @@
 package ru.geekbrains.android1.hw1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,7 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SitySelect extends AppCompatActivity {
 
+
     private static final String TAG = "SitySelect";
+    private Button buttonBack;
     private TextView editTextTown;
     private Spinner spinnerTown;
     private CheckBox checkBoxAtmoPressure;
@@ -37,6 +40,8 @@ public class SitySelect extends AppCompatActivity {
         setOnСheckBoxAtmoPressure();
         setOnСheckBoxWind();
 
+        setOnStartMainActivityBtnClick ();
+
         String instanceState;
         if (savedInstanceState == null) {
             instanceState = "Первый запуск!";
@@ -48,7 +53,12 @@ public class SitySelect extends AppCompatActivity {
     }
 
     private void initViews() {
+        buttonBack = findViewById(R.id.buttonBack);
+
         editTextTown = findViewById(R.id.textViewSitySelectChoose);
+        String text = getIntent().getStringExtra(MainActivity.TOWN_KEY);
+        editTextTown.setText(text);
+
         spinnerTown = findViewById(R.id.spinnerTown);
 
         checkBoxAtmoPressure = findViewById(R.id.checkBoxAtmoPressure);
@@ -56,6 +66,16 @@ public class SitySelect extends AppCompatActivity {
 
         checkBoxWind = findViewById(R.id.checkBoxWind);
         textViewWindInfo = findViewById(R.id.textViewWindInfo);
+    }
+
+    private void setOnStartMainActivityBtnClick() {
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (SitySelect.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setOnСheckBoxAtmoPressure() {
