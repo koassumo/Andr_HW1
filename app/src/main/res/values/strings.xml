@@ -22,6 +22,7 @@
     <string name="checkbox_wind_title">скорость ветра</string>
     <string name="checkbox_atmo_title">атмосферное давление</string>
     <string name="button_back">Назад</string>
+    <string name="button_help">help</string>
     <string name="btn_sity_select_title">Изменить</string>
     <string-array name="list_of_towns">
         <item>Москва, Россия</item>

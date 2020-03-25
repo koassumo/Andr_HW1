@@ -19,6 +19,8 @@ public class SitySelect extends AppCompatActivity {
 
     private static final String TAG = "SitySelect";
     private Button buttonBack;
+    private Button buttonHelp;
+
     private TextView editTextTown;
     private Spinner spinnerTown;
     private CheckBox checkBoxAtmoPressure;
@@ -37,10 +39,11 @@ public class SitySelect extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sity_select);
         initViews();
-        setOnСheckBoxAtmoPressure();
-        setOnСheckBoxWind();
+        setOnCheckBoxAtmoPressure();
+        setOnCheckBoxWind();
 
         setOnStartMainActivityBtnClick ();
+        setOnHelpBtnClick();
 
         String instanceState;
         if (savedInstanceState == null) {
@@ -54,6 +57,7 @@ public class SitySelect extends AppCompatActivity {
 
     private void initViews() {
         buttonBack = findViewById(R.id.buttonBack);
+        buttonHelp = findViewById(R.id.buttonHelp);
 
         editTextTown = findViewById(R.id.textViewSitySelectChoose);
         String text = getIntent().getStringExtra(MainActivity.TOWN_KEY);
@@ -78,7 +82,17 @@ public class SitySelect extends AppCompatActivity {
         });
     }
 
-    private void setOnСheckBoxAtmoPressure() {
+    private void setOnHelpBtnClick() {
+        buttonHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (SitySelect.this, ActivityHelpInstruction.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void setOnCheckBoxAtmoPressure() {
         checkBoxAtmoPressure.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -93,7 +107,7 @@ public class SitySelect extends AppCompatActivity {
         });
     }
 
-    private void setOnСheckBoxWind() {
+    private void setOnCheckBoxWind() {
         checkBoxWind.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
