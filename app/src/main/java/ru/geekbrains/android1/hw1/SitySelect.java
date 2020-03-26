@@ -23,11 +23,8 @@ public class SitySelect extends AppCompatActivity {
 
     private TextView editTextTown;
     private Spinner spinnerTown;
-    private CheckBox checkBoxAtmoPressure;
-    private TextView textViewAtmoInfo;
-
-    private CheckBox checkBoxWind;
-    private TextView textViewWindInfo;
+    private CheckBox checkBoxAtmoPressure, checkBoxWind;
+    private TextView textViewAtmoInfo, textViewWindInfo;
 
     private final String editTextTownKey = "editTextTownKey";
     private final String spinnerTownKey = "spinnerTownKey";
@@ -78,6 +75,7 @@ public class SitySelect extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent (SitySelect.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -142,6 +140,14 @@ public class SitySelect extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "onPause()", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onPause");
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Toast.makeText(getApplicationContext(), "onStop()", Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onStop");
+    }
+
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle saveInstanceState){
