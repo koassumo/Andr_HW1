@@ -13,8 +13,8 @@ public class MainActivity extends AppCompatActivity {
 
     static final String TOWN_KEY = "town_key";
 
-    private TextView textViewSity;
-    private Button buttonSitySelectActivity;
+    private TextView townTextView;
+    private Button goOptionsSelectActivityBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,20 +22,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initView();
-        setOnBtnSitySelect();
+        setOnTownSelectBtnClick();
     }
 
     private void initView() {
-        textViewSity = findViewById(R.id.townTextView);
-        buttonSitySelectActivity = findViewById(R.id.goOptionsSelectActivityBtn);
+        townTextView = findViewById(R.id.townTextView);
+        goOptionsSelectActivityBtn = findViewById(R.id.goOptionsSelectActivityBtn);
     }
 
-    private void setOnBtnSitySelect() {
-        buttonSitySelectActivity.setOnClickListener(new View.OnClickListener() {
+    private void setOnTownSelectBtnClick() {
+        goOptionsSelectActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent (MainActivity.this, OptionsSelectActivity.class);
-                intent.putExtra(TOWN_KEY, textViewSity.getText().toString());
+                intent.putExtra(TOWN_KEY, townTextView.getText().toString());
                 startActivity(intent);
             }
         });
