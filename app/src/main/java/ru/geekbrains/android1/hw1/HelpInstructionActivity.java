@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ActivityHelpInstruction extends AppCompatActivity {
+public class HelpInstructionActivity extends AppCompatActivity {
 
     private Button buttonBack;
 
@@ -20,7 +20,7 @@ public class ActivityHelpInstruction extends AppCompatActivity {
     }
 
     private void initView() {
-        buttonBack = findViewById(R.id.buttonBack);
+        buttonBack = findViewById(R.id.goBackToMainActivityBtn);
 
     }
 

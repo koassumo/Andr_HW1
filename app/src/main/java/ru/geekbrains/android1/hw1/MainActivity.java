@@ -4,12 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -29,15 +26,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        textViewSity = findViewById(R.id.textViewSity);
-        buttonSitySelectActivity = findViewById(R.id.buttonSitySelectActivity);
+        textViewSity = findViewById(R.id.townTextView);
+        buttonSitySelectActivity = findViewById(R.id.goOptionsSelectActivityBtn);
     }
 
     private void setOnBtnSitySelect() {
         buttonSitySelectActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (MainActivity.this, SitySelect.class);
+                Intent intent = new Intent (MainActivity.this, OptionsSelectActivity.class);
                 intent.putExtra(TOWN_KEY, textViewSity.getText().toString());
                 startActivity(intent);
             }

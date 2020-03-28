@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityHelpInstruction">
+    tools:context=".HelpInstructionActivity">
 
 
     <Button
-        android:id="@+id/buttonBack"
+        android:id="@+id/goBackToMainActivityBtn"
         android:layout_width="79dp"
         android:layout_height="42dp"
         android:layout_marginStart="16dp"

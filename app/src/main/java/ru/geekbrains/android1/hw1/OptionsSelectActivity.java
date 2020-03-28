@@ -14,7 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SitySelect extends AppCompatActivity {
+public class OptionsSelectActivity extends AppCompatActivity {
 
 
     private static final String TAG = "SitySelect";
@@ -34,7 +34,7 @@ public class SitySelect extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sity_select);
+        setContentView(R.layout.activity_options_select);
         initViews();
         setOnCheckBoxAtmoPressure();
         setOnCheckBoxWind();
@@ -53,27 +53,27 @@ public class SitySelect extends AppCompatActivity {
     }
 
     private void initViews() {
-        buttonBack = findViewById(R.id.buttonBack);
-        buttonHelp = findViewById(R.id.buttonHelp);
+        buttonBack = findViewById(R.id.goBackToMainActivityBtn);
+        buttonHelp = findViewById(R.id.goHelpInstructionActivityBtn);
 
-        editTextTown = findViewById(R.id.textViewSitySelectChoose);
+        editTextTown = findViewById(R.id.townSelectEditView);
         String text = getIntent().getStringExtra(MainActivity.TOWN_KEY);
         editTextTown.setText(text);
 
-        spinnerTown = findViewById(R.id.spinnerTown);
+        spinnerTown = findViewById(R.id.townSelectSpinner);
 
-        checkBoxAtmoPressure = findViewById(R.id.checkBoxAtmoPressure);
-        textViewAtmoInfo = findViewById(R.id.textViewAtmoInfo);
+        checkBoxAtmoPressure = findViewById(R.id.pressureCheckBox);
+        textViewAtmoInfo = findViewById(R.id.pressureTextView);
 
-        checkBoxWind = findViewById(R.id.checkBoxWind);
-        textViewWindInfo = findViewById(R.id.textViewWindInfo);
+        checkBoxWind = findViewById(R.id.windCheckBox);
+        textViewWindInfo = findViewById(R.id.windTextView);
     }
 
     private void setOnStartMainActivityBtnClick() {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (SitySelect.this, MainActivity.class);
+                Intent intent = new Intent (OptionsSelectActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -84,7 +84,7 @@ public class SitySelect extends AppCompatActivity {
         buttonHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (SitySelect.this, ActivityHelpInstruction.class);
+                Intent intent = new Intent (OptionsSelectActivity.this, HelpInstructionActivity.class);
                 startActivity(intent);
             }
         });
