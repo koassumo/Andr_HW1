@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InfoDeskFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/townTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.21"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/region"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+
+        <Button
+            android:id="@+id/goOptionsSelectActivityBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/button_options_select_title"
+            app:layout_constraintBottom_toBottomOf="@+id/townTextView"
+            app:layout_constraintStart_toEndOf="@+id/townTextView"
+            app:layout_constraintTop_toTopOf="@+id/townTextView" />
+
+        <ImageView
+            android:id="@+id/skyImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/townTextView"
+            app:srcCompat="@drawable/sun_cloud"
+            android:layout_width="112dp"
+            android:layout_height="89dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/desc" />
+
+        <TextView
+            android:id="@+id/pressureTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/skyImageView"
+            app:layout_constraintTop_toTopOf="@+id/degreesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/atmo_pressure" />
+
+        <TextView
+            android:id="@+id/degreesTextView"
+            app:layout_constraintBottom_toBottomOf="@+id/skyImageView"
+            app:layout_constraintEnd_toStartOf="@+id/skyImageView"
+            app:layout_constraintHorizontal_bias="0.7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/skyImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/temperature"
+            android:textSize="70sp" />
+
+        <TextView
+            android:id="@+id/windTextView"
+            app:layout_constraintBottom_toBottomOf="@+id/degreesTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.589"
+            app:layout_constraintStart_toEndOf="@+id/skyImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wind"
+            android:textSize="32sp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
