@@ -4,83 +4,105 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SitySelect">
+    tools:context=".OptionsSelectActivity">
 
-    <TextView
-        android:id="@+id/textViewSitySelectTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/textview_town_select_title"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <Button
+        android:id="@+id/goBackMainActivityBtn"
+        android:layout_width="79dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/button_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/goHelpInstructionActivityBtn"
+        android:layout_width="79dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/button_help"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/townSelectTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textview_town_select_title"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goBackMainActivityBtn" />
+
     <EditText
-        android:id="@+id/textViewSitySelectChoose"
+        android:id="@+id/townSelectEditView"
+        android:inputType="text"
+        android:autofillHints=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="22dp"
-        android:maxLines="1"
+        android:layout_marginTop="12dp"
         android:ems="12"
-        android:maxLength="15"
-        android:textSize="25sp"
         android:hint="@string/edittext_town_hint"
+        android:maxLength="15"
+        android:maxLines="1"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSitySelectTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/townSelectTitleTextView" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/townSelectSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="16dp"
         android:entries="@array/list_of_towns"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSitySelectChoose" />
+        app:layout_constraintTop_toBottomOf="@+id/townSelectEditView" />
 
     <CheckBox
-        android:id="@+id/checkBoxWind"
+        android:id="@+id/windCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="132dp"
+        android:layout_marginBottom="52dp"
         android:checked="true"
         android:text="@string/checkbox_wind_title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <CheckBox
-        android:id="@+id/checkBoxAtmoPressure"
+        android:id="@+id/pressureCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="12dp"
         android:checked="true"
         android:text="@string/checkbox_atmo_title"
-        app:layout_constraintBottom_toTopOf="@+id/checkBoxWind"
+        app:layout_constraintBottom_toTopOf="@+id/windCheckBox"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textViewAtmoInfo"
+        android:id="@+id/pressureTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="@string/atmo_pressure"
-        app:layout_constraintBottom_toBottomOf="@+id/checkBoxAtmoPressure"
+        app:layout_constraintBottom_toBottomOf="@+id/pressureCheckBox"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/checkBoxAtmoPressure" />
+        app:layout_constraintTop_toTopOf="@+id/pressureCheckBox" />
 
     <TextView
-        android:id="@+id/textViewWindInfo"
+        android:id="@+id/windTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="@string/wind"
-        app:layout_constraintBottom_toBottomOf="@+id/checkBoxWind"
+        app:layout_constraintBottom_toBottomOf="@+id/windCheckBox"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/checkBoxWind" />
+        app:layout_constraintTop_toTopOf="@+id/windCheckBox" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
