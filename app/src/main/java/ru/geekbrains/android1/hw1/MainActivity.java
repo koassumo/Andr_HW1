@@ -11,10 +11,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    static final String TOWN_KEY = "town_key";
-    static final String DEGREES_KEY = "degrees_key";
-    static final String PRESSURE_KEY = "pressure_key";
-    static final String WIND_KEY = "wind_key";
     private final static int REQUEST_CODE = 1;
 
     private TextView townTextView;
@@ -47,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, OptionsSelectActivity.class);
-                intent.putExtra(TOWN_KEY, townTextView.getText().toString());
+                intent.putExtra(Constants.TOWN_DATA_KEY, townTextView.getText().toString());
+                intent.putExtra(Constants.PRESSURE_IS_CHECKED_KEY, false);
                 startActivityForResult(intent, REQUEST_CODE);
             }
         });
@@ -60,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         if (resultCode == RESULT_OK) {
-            townTextView.setText(data.getStringExtra(TOWN_KEY));
+            townTextView.setText(data.getStringExtra(Constants.TOWN_DATA_KEY));
 //            degreesTextView.setText(data.getStringExtra(DEGREES_KEY));
-            isPressureShow = data.getBooleanExtra(PRESSURE_KEY, true);
-            isWindShow = data.getBooleanExtra(WIND_KEY, true);
+            isPressureShow = data.getBooleanExtra(Constants.PRESSURE_IS_CHECKED_KEY, true);
+            isWindShow = data.getBooleanExtra(Constants.WIND_IS_CHECKED_KEY, true);
             if (isPressureShow) pressureTextView.setVisibility(View.VISIBLE); else pressureTextView.setVisibility(View.GONE);
             if (isWindShow) windTextView.setVisibility(View.VISIBLE); else windTextView.setVisibility(View.GONE);
 

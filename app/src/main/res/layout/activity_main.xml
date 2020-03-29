@@ -144,7 +144,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="@string/btn_sity_select_title"
+        android:text="@string/button_options_select_title"
         app:layout_constraintBottom_toBottomOf="@+id/townTextView"
         app:layout_constraintStart_toEndOf="@+id/townTextView"
         app:layout_constraintTop_toTopOf="@+id/townTextView" />

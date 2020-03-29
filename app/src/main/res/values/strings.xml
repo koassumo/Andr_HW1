@@ -23,8 +23,9 @@
     <string name="checkbox_atmo_title">атмосферное давление</string>
     <string name="button_back">Назад</string>
     <string name="button_help">help</string>
-    <string name="btn_sity_select_title">Изменить</string>
+    <string name="button_options_select_title">Изменить</string>
     <string name="desc">any_image</string>
+    <string name="button_go_url">посмотреть погоду в яндексе</string>
     <string-array name="list_of_towns">
         <item>Москва, Россия</item>
         <item>Лондон, Великобритания</item>

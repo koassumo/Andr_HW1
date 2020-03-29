@@ -14,11 +14,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.Serializable;
-
 public class OptionsSelectActivity extends AppCompatActivity {
 
-    private static final String TAG = "SitySelect";
+    private static final String TAG = "OptionsSelect";
+    private final String TOWN_EDIT_TEXT_STATE_KEY = "TOWN_EDIT_TEXT_STATE_KEY";
+    private final String TOWN_SPINNER_STATE_KEY = "TOWN_SPINNER_STATE_KEY";
+    private final String PRESSURE_IS_CHECKED_STATE_KEY = "PRESSURE_IS_CHECKED_STATE_KEY";
+    private final String WIND_IS_CHECKED_STATE_KEY = "WIND_IS_CHECKED_STATE_KEY";
+
     private Button goBackMainActivityBtn;
     private Button goHelpInstructionActivityBtn;
 
@@ -26,11 +29,6 @@ public class OptionsSelectActivity extends AppCompatActivity {
     private Spinner townSelectSpinner;
     private CheckBox pressureCheckBox, windCheckBox;
     private TextView pressureTextView, windTextView;
-
-    private final String editTextTownKey = "editTextTownKey";
-    private final String spinnerTownKey = "spinnerTownKey";
-    private final String checkAtmoKey = "checkAtmoKey";
-    private final String checkWindKey = "checkWindKey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +54,10 @@ public class OptionsSelectActivity extends AppCompatActivity {
     }
 
     private void setDataFromMainActivity() {
-        pressureTextView.setText(getIntent().getStringExtra());
+        pressureTextView.setText(getIntent().getStringExtra(Constants.PRESSURE_DATA_KEY));
+        if (getIntent().getBooleanExtra(Constants.PRESSURE_IS_CHECKED_KEY, true))
+            pressureTextView.setVisibility(View.VISIBLE);
+        else pressureTextView.setVisibility(View.GONE);
     }
 
     private void initViews() {
@@ -64,7 +65,7 @@ public class OptionsSelectActivity extends AppCompatActivity {
         goHelpInstructionActivityBtn = findViewById(R.id.goHelpInstructionActivityBtn);
 
         townSelectEditView = findViewById(R.id.townSelectEditView);
-        String text = getIntent().getStringExtra(MainActivity.TOWN_KEY);
+        String text = getIntent().getStringExtra(Constants.TOWN_DATA_KEY);
         townSelectEditView.setText(text);
 
         townSelectSpinner = findViewById(R.id.townSelectSpinner);
@@ -81,9 +82,9 @@ public class OptionsSelectActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intentResult = new Intent();
-                intentResult.putExtra(MainActivity.TOWN_KEY, townSelectEditView.getText().toString());
-                intentResult.putExtra(MainActivity.PRESSURE_KEY, pressureCheckBox.isChecked());
-                intentResult.putExtra(MainActivity.WIND_KEY, windCheckBox.isChecked());
+                intentResult.putExtra(Constants.TOWN_DATA_KEY, townSelectEditView.getText().toString());
+                intentResult.putExtra(Constants.PRESSURE_IS_CHECKED_KEY, pressureCheckBox.isChecked());
+                intentResult.putExtra(Constants.WIND_IS_CHECKED_KEY, windCheckBox.isChecked());
                 setResult(MainActivity.RESULT_OK, intentResult);
                 finish();
             }
@@ -108,7 +109,7 @@ public class OptionsSelectActivity extends AppCompatActivity {
         pressureCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) pressureTextView.setVisibility(View.VISIBLE); else pressureCheckBox.setVisibility(View.GONE);
+                if (isChecked) pressureTextView.setVisibility(View.VISIBLE); else pressureTextView.setVisibility(View.GONE);
             }
         });
     }
@@ -156,10 +157,10 @@ public class OptionsSelectActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "onSaveInstanceState()", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onSaveInstanceState()");
 
-        saveInstanceState.putString(editTextTownKey, townSelectEditView.getText().toString());
-        saveInstanceState.putInt(spinnerTownKey, townSelectSpinner.getSelectedItemPosition());
-        saveInstanceState.putBoolean(checkAtmoKey, pressureCheckBox.isChecked());
-        saveInstanceState.putBoolean(checkWindKey, windCheckBox.isChecked());
+        saveInstanceState.putString(TOWN_EDIT_TEXT_STATE_KEY, townSelectEditView.getText().toString());
+        saveInstanceState.putInt(TOWN_SPINNER_STATE_KEY, townSelectSpinner.getSelectedItemPosition());
+        saveInstanceState.putBoolean(PRESSURE_IS_CHECKED_STATE_KEY, pressureCheckBox.isChecked());
+        saveInstanceState.putBoolean(WIND_IS_CHECKED_STATE_KEY, windCheckBox.isChecked());
 
         super.onSaveInstanceState(saveInstanceState);
     }
@@ -168,10 +169,10 @@ public class OptionsSelectActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(@NonNull Bundle saveInstanceState){
         super.onRestoreInstanceState(saveInstanceState);
 
-        townSelectEditView.setText(saveInstanceState.getString(editTextTownKey));
-        townSelectSpinner.setSelection(saveInstanceState.getInt(spinnerTownKey));
-        pressureCheckBox.setChecked(saveInstanceState.getBoolean(checkAtmoKey));
-        windCheckBox.setChecked(saveInstanceState.getBoolean(checkWindKey));
+        townSelectEditView.setText(saveInstanceState.getString(TOWN_EDIT_TEXT_STATE_KEY));
+        townSelectSpinner.setSelection(saveInstanceState.getInt(TOWN_SPINNER_STATE_KEY));
+        pressureCheckBox.setChecked(saveInstanceState.getBoolean(PRESSURE_IS_CHECKED_STATE_KEY));
+        windCheckBox.setChecked(saveInstanceState.getBoolean(WIND_IS_CHECKED_STATE_KEY));
 
         Toast.makeText(getApplicationContext(), "Повторный запуск!! - onRestoreInstanceState()", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "Повторный запуск!! - onRestoreInstanceState()");
