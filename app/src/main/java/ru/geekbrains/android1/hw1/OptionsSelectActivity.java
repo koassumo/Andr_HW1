@@ -14,17 +14,18 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.Serializable;
+
 public class OptionsSelectActivity extends AppCompatActivity {
 
-
     private static final String TAG = "SitySelect";
-    private Button buttonBack;
-    private Button buttonHelp;
+    private Button goBackMainActivityBtn;
+    private Button goHelpInstructionActivityBtn;
 
-    private TextView editTextTown;
-    private Spinner spinnerTown;
-    private CheckBox checkBoxAtmoPressure, checkBoxWind;
-    private TextView textViewAtmoInfo, textViewWindInfo;
+    private TextView townSelectEditView;
+    private Spinner townSelectSpinner;
+    private CheckBox pressureCheckBox, windCheckBox;
+    private TextView pressureTextView, windTextView;
 
     private final String editTextTownKey = "editTextTownKey";
     private final String spinnerTownKey = "spinnerTownKey";
@@ -36,10 +37,12 @@ public class OptionsSelectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options_select);
         initViews();
-        setOnCheckBoxAtmoPressure();
-        setOnCheckBoxWind();
+        setDataFromMainActivity();
 
-        setOnStartMainActivityBtnClick ();
+        setOnPressureCheckBoxClick();
+        setOnWindCheckBoxClick();
+
+        setOnGoBackMainActivityBtnClick();
         setOnHelpBtnClick();
 
         String instanceState;
@@ -52,70 +55,69 @@ public class OptionsSelectActivity extends AppCompatActivity {
         Log.d(TAG, instanceState + " - onCreate()");
     }
 
-    private void initViews() {
-        buttonBack = findViewById(R.id.goBackToMainActivityBtn);
-        buttonHelp = findViewById(R.id.goHelpInstructionActivityBtn);
-
-        editTextTown = findViewById(R.id.townSelectEditView);
-        String text = getIntent().getStringExtra(MainActivity.TOWN_KEY);
-        editTextTown.setText(text);
-
-        spinnerTown = findViewById(R.id.townSelectSpinner);
-
-        checkBoxAtmoPressure = findViewById(R.id.pressureCheckBox);
-        textViewAtmoInfo = findViewById(R.id.pressureTextView);
-
-        checkBoxWind = findViewById(R.id.windCheckBox);
-        textViewWindInfo = findViewById(R.id.windTextView);
+    private void setDataFromMainActivity() {
+        pressureTextView.setText(getIntent().getStringExtra());
     }
 
-    private void setOnStartMainActivityBtnClick() {
-        buttonBack.setOnClickListener(new View.OnClickListener() {
+    private void initViews() {
+        goBackMainActivityBtn = findViewById(R.id.goBackMainActivityBtn);
+        goHelpInstructionActivityBtn = findViewById(R.id.goHelpInstructionActivityBtn);
+
+        townSelectEditView = findViewById(R.id.townSelectEditView);
+        String text = getIntent().getStringExtra(MainActivity.TOWN_KEY);
+        townSelectEditView.setText(text);
+
+        townSelectSpinner = findViewById(R.id.townSelectSpinner);
+
+        pressureCheckBox = findViewById(R.id.pressureCheckBox);
+        pressureTextView = findViewById(R.id.pressureTextView);
+
+        windCheckBox = findViewById(R.id.windCheckBox);
+        windTextView = findViewById(R.id.windTextView);
+    }
+
+    private void setOnGoBackMainActivityBtnClick() {
+        goBackMainActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (OptionsSelectActivity.this, MainActivity.class);
-                startActivity(intent);
+                Intent intentResult = new Intent();
+                intentResult.putExtra(MainActivity.TOWN_KEY, townSelectEditView.getText().toString());
+                intentResult.putExtra(MainActivity.PRESSURE_KEY, pressureCheckBox.isChecked());
+                intentResult.putExtra(MainActivity.WIND_KEY, windCheckBox.isChecked());
+                setResult(MainActivity.RESULT_OK, intentResult);
                 finish();
             }
         });
     }
 
+
+
+
     private void setOnHelpBtnClick() {
-        buttonHelp.setOnClickListener(new View.OnClickListener() {
+        goHelpInstructionActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent (OptionsSelectActivity.this, HelpInstructionActivity.class);
+//                intent.putExtra(MainActivity.TOWN_KEY, townSelectEditView.getText().toString());    если нужно что-то передать
                 startActivity(intent);
             }
         });
     }
 
-    private void setOnCheckBoxAtmoPressure() {
-        checkBoxAtmoPressure.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    private void setOnPressureCheckBoxClick() {
+        pressureCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                String text;
-                if (isChecked) {
-                    text = getString(R.string.atmo_pressure);
-                } else {
-                    text = getString(R.string.atmo_pressure_null);
-                }
-                textViewAtmoInfo.setText(text);
+                if (isChecked) pressureTextView.setVisibility(View.VISIBLE); else pressureCheckBox.setVisibility(View.GONE);
             }
         });
     }
 
-    private void setOnCheckBoxWind() {
-        checkBoxWind.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    private void setOnWindCheckBoxClick() {
+        windCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                String text;
-                if (isChecked) {
-                    text = getString(R.string.wind);
-                } else {
-                    text = getString(R.string.wind_null);
-                }
-                textViewWindInfo.setText(text);
+                if (isChecked) windTextView.setVisibility(View.VISIBLE); else windTextView.setVisibility(View.GONE);
             }
         });
     }
@@ -154,10 +156,10 @@ public class OptionsSelectActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "onSaveInstanceState()", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "onSaveInstanceState()");
 
-        saveInstanceState.putString(editTextTownKey, editTextTown.getText().toString());
-        saveInstanceState.putInt(spinnerTownKey, spinnerTown.getSelectedItemPosition());
-        saveInstanceState.putBoolean(checkAtmoKey, checkBoxAtmoPressure.isChecked());
-        saveInstanceState.putBoolean(checkWindKey, checkBoxWind.isChecked());
+        saveInstanceState.putString(editTextTownKey, townSelectEditView.getText().toString());
+        saveInstanceState.putInt(spinnerTownKey, townSelectSpinner.getSelectedItemPosition());
+        saveInstanceState.putBoolean(checkAtmoKey, pressureCheckBox.isChecked());
+        saveInstanceState.putBoolean(checkWindKey, windCheckBox.isChecked());
 
         super.onSaveInstanceState(saveInstanceState);
     }
@@ -166,10 +168,10 @@ public class OptionsSelectActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(@NonNull Bundle saveInstanceState){
         super.onRestoreInstanceState(saveInstanceState);
 
-        editTextTown.setText(saveInstanceState.getString(editTextTownKey));
-        spinnerTown.setSelection(saveInstanceState.getInt(spinnerTownKey));
-        checkBoxAtmoPressure.setChecked(saveInstanceState.getBoolean(checkAtmoKey));
-        checkBoxWind.setChecked(saveInstanceState.getBoolean(checkWindKey));
+        townSelectEditView.setText(saveInstanceState.getString(editTextTownKey));
+        townSelectSpinner.setSelection(saveInstanceState.getInt(spinnerTownKey));
+        pressureCheckBox.setChecked(saveInstanceState.getBoolean(checkAtmoKey));
+        windCheckBox.setChecked(saveInstanceState.getBoolean(checkWindKey));
 
         Toast.makeText(getApplicationContext(), "Повторный запуск!! - onRestoreInstanceState()", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "Повторный запуск!! - onRestoreInstanceState()");

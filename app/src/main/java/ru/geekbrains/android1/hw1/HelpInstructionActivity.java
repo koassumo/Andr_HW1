@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class HelpInstructionActivity extends AppCompatActivity {
 
-    private Button buttonBack;
+    private Button goBackToOptionsSelectActivityBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,16 +16,15 @@ public class HelpInstructionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_help_instruction);
 
         initView();
-        setOnButtonBackClick();
+        setOnGoBackToOptionsSelectActivityBtnClick();
     }
 
     private void initView() {
-        buttonBack = findViewById(R.id.goBackToMainActivityBtn);
-
+        goBackToOptionsSelectActivityBtn = findViewById(R.id.goBackMainActivityBtn);
     }
 
-    private void setOnButtonBackClick() {
-        buttonBack.setOnClickListener(new View.OnClickListener() {
+    private void setOnGoBackToOptionsSelectActivityBtnClick() {
+        goBackToOptionsSelectActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
