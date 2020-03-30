@@ -8,21 +8,23 @@
 
     <Button
         android:id="@+id/goBackMainActivityBtn"
-        android:layout_width="79dp"
-        android:layout_height="42dp"
+        android:layout_width="74dp"
+        android:layout_height="38dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/button_back"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/goHelpInstructionActivityBtn"
-        android:layout_width="79dp"
-        android:layout_height="42dp"
+        android:layout_width="67dp"
+        android:layout_height="38dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/button_help"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textview_town_select_title"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,17 +41,17 @@
 
     <EditText
         android:id="@+id/townSelectEditView"
-        android:inputType="text"
-        android:autofillHints=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
+        android:autofillHints=""
         android:ems="12"
         android:hint="@string/edittext_town_hint"
+        android:inputType="text"
         android:maxLength="15"
         android:maxLines="1"
-        android:textSize="25sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/townSelectTitleTextView" />
 
@@ -68,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="24dp"
         android:checked="true"
         android:text="@string/checkbox_wind_title"
         app:layout_constraintBottom_toBottomOf="parent"
