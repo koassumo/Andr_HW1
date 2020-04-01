@@ -37,11 +37,11 @@ public class OptionsSelectActivity extends AppCompatActivity {
         initViews();
         setDataFromMainActivity();
 
-        setOnPressureCheckBoxClick();
-        setOnWindCheckBoxClick();
-
         setOnGoBackMainActivityBtnClick();
         setOnHelpBtnClick();
+
+        setOnPressureCheckBoxClick();
+        setOnWindCheckBoxClick();
 
         String instanceState;
         if (savedInstanceState == null) {
@@ -53,28 +53,34 @@ public class OptionsSelectActivity extends AppCompatActivity {
         Log.d(TAG, instanceState + " - onCreate()");
     }
 
-    private void setDataFromMainActivity() {
-        pressureTextView.setText(getIntent().getStringExtra(Constants.PRESSURE_DATA_KEY));
-        if (getIntent().getBooleanExtra(Constants.PRESSURE_IS_CHECKED_KEY, true))
-            pressureTextView.setVisibility(View.VISIBLE);
-        else pressureTextView.setVisibility(View.GONE);
-    }
 
     private void initViews() {
         goBackMainActivityBtn = findViewById(R.id.goBackMainActivityBtn);
         goHelpInstructionActivityBtn = findViewById(R.id.goHelpInstructionActivityBtn);
-
         townSelectEditView = findViewById(R.id.townSelectEditView);
-        String text = getIntent().getStringExtra(Constants.TOWN_DATA_KEY);
-        townSelectEditView.setText(text);
-
         townSelectSpinner = findViewById(R.id.townSelectSpinner);
-
         pressureCheckBox = findViewById(R.id.pressureCheckBox);
         pressureTextView = findViewById(R.id.pressureTextView);
-
         windCheckBox = findViewById(R.id.windCheckBox);
         windTextView = findViewById(R.id.windTextView);
+    }
+
+    private void setDataFromMainActivity() {
+        townSelectEditView.setText(getIntent().getStringExtra(Constants.TOWN_DATA_KEY));
+        if (getIntent().getBooleanExtra(Constants.PRESSURE_IS_CHECKED_KEY, true)) {
+            pressureCheckBox.setChecked(true);
+            pressureTextView.setVisibility(View.VISIBLE);
+        } else {
+            pressureCheckBox.setChecked(false);
+            pressureTextView.setVisibility(View.GONE);
+        }
+        if (getIntent().getBooleanExtra(Constants.WIND_IS_CHECKED_KEY, true)) {
+            windCheckBox.setChecked(true);
+            windTextView.setVisibility(View.VISIBLE);
+        } else {
+            windCheckBox.setChecked(false);
+            windTextView.setVisibility(View.GONE);
+        }
     }
 
     private void setOnGoBackMainActivityBtnClick() {
@@ -91,15 +97,12 @@ public class OptionsSelectActivity extends AppCompatActivity {
         });
     }
 
-
-
-
     private void setOnHelpBtnClick() {
         goHelpInstructionActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent (OptionsSelectActivity.this, HelpInstructionActivity.class);
-//                intent.putExtra(MainActivity.TOWN_KEY, townSelectEditView.getText().toString());    если нужно что-то передать
+//                intent.putExtra(MainActivity.TOWN_KEY, townSelectEditView.getText().toString());    если нужно что-то передать (безвозвратно)
                 startActivity(intent);
             }
         });

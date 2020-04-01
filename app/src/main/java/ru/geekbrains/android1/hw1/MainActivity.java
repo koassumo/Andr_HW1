@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView degreesTextView;
     private TextView pressureTextView;
     private TextView windTextView;
-    private boolean isPressureShow;
-    private boolean isWindShow;
+    private boolean isPressureShow = true;
+    private boolean isWindShow = true;
     private Button goOptionsSelectActivityBtn;
 
     @Override
@@ -44,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, OptionsSelectActivity.class);
                 intent.putExtra(Constants.TOWN_DATA_KEY, townTextView.getText().toString());
-                intent.putExtra(Constants.PRESSURE_IS_CHECKED_KEY, false);
+                intent.putExtra(Constants.PRESSURE_IS_CHECKED_KEY, isPressureShow);
+                intent.putExtra(Constants.WIND_IS_CHECKED_KEY, isWindShow);
                 startActivityForResult(intent, REQUEST_CODE);
             }
         });
@@ -58,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         }
         if (resultCode == RESULT_OK) {
             townTextView.setText(data.getStringExtra(Constants.TOWN_DATA_KEY));
-//            degreesTextView.setText(data.getStringExtra(DEGREES_KEY));
             isPressureShow = data.getBooleanExtra(Constants.PRESSURE_IS_CHECKED_KEY, true);
             isWindShow = data.getBooleanExtra(Constants.WIND_IS_CHECKED_KEY, true);
             if (isPressureShow) pressureTextView.setVisibility(View.VISIBLE); else pressureTextView.setVisibility(View.GONE);
