@@ -75,25 +75,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(@NonNull Bundle saveInstanceState){
         Toast.makeText(getApplicationContext(), "onSaveInstanceState()", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "onSaveInstanceState()");
-
-        saveInstanceState.putString(TOWN_EDIT_TEXT_STATE_KEY, townSelectEditView.getText().toString());
-        saveInstanceState.putBoolean(PRESSURE_IS_CHECKED_STATE_KEY, pressureCheckBox.isChecked());
-        saveInstanceState.putBoolean(WIND_IS_CHECKED_STATE_KEY, windCheckBox.isChecked());
-
+        saveInstanceState.putString(Constants.TOWN_DATA_KEY, townTextView.getText().toString());
         super.onSaveInstanceState(saveInstanceState);
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle saveInstanceState){
         super.onRestoreInstanceState(saveInstanceState);
-
-        townSelectEditView.setText(saveInstanceState.getString(TOWN_EDIT_TEXT_STATE_KEY));
-        townSelectSpinner.setSelection(saveInstanceState.getInt(TOWN_SPINNER_STATE_KEY));
-        pressureCheckBox.setChecked(saveInstanceState.getBoolean(PRESSURE_IS_CHECKED_STATE_KEY));
-        windCheckBox.setChecked(saveInstanceState.getBoolean(WIND_IS_CHECKED_STATE_KEY));
-
+        townTextView.setText(saveInstanceState.getString(Constants.TOWN_DATA_KEY));
         Toast.makeText(getApplicationContext(), "Повторный запуск!! - onRestoreInstanceState()", Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "Повторный запуск!! - onRestoreInstanceState()");
     }
 }
