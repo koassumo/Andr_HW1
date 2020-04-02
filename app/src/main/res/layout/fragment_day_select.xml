@@ -5,6 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".DaySelectFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+
 
 <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
 <!--        android:layout_width="match_parent"-->
@@ -18,53 +25,53 @@
 <!--            android:layout_marginTop="24dp"-->
 <!--            tools:layout_editor_absoluteX="1dp">-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
 
-                <Button
-                    android:id="@+id/showPlus1DayBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/plus_1_day" />
+<!--                <Button-->
+<!--                    android:id="@+id/showPlus1DayBtn"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/plus_1_day" />-->
 
-                <Button
-                    android:id="@+id/showPlus2DaysBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/plus_2_days" />
+<!--                <Button-->
+<!--                    android:id="@+id/showPlus2DaysBtn"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/plus_2_days" />-->
 
-                <Button
-                    android:id="@+id/showPlus3DaysBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/plus_3_days" />
+<!--                <Button-->
+<!--                    android:id="@+id/showPlus3DaysBtn"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/plus_3_days" />-->
 
-                <Button
-                    android:id="@+id/showPlus4DaysBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/plus_4_days" />
+<!--                <Button-->
+<!--                    android:id="@+id/showPlus4DaysBtn"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/plus_4_days" />-->
 
-                <Button
-                    android:id="@+id/showPlus5DaysBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/plus_5_days" />
+<!--                <Button-->
+<!--                    android:id="@+id/showPlus5DaysBtn"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/plus_5_days" />-->
 
-                <Button
-                    android:id="@+id/showPlus6DaysBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/plus_6_days" />
+<!--                <Button-->
+<!--                    android:id="@+id/showPlus6DaysBtn"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/plus_6_days" />-->
 
-                <Button
-                    android:id="@+id/showPlus7DaysBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/plus_7_days" />
-            </LinearLayout>
+<!--                <Button-->
+<!--                    android:id="@+id/showPlus7DaysBtn"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/plus_7_days" />-->
+<!--            </LinearLayout>-->
 <!--        </ScrollView>-->
 
 <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
