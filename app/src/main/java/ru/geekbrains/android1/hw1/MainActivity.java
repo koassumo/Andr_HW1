@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.button.MaterialButton;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView windTextView;
     private boolean isPressureShow = true;
     private boolean isWindShow = true;
-    private Button goOptionsSelectActivityBtn;
+    private MaterialButton goOptionsSelectActivityBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

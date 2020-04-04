@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Погодное приложение</string>
-    <string name="region">Москва, Россия</string>
+    <string name="region">Москва</string>
     <string name="region_en">Moscow, Russia</string>
     <string name="temperature">+6</string>
     <string name="switch_to_english">english</string>
@@ -17,7 +17,7 @@
     <string name="atmo_pressure_null"> </string>
     <string name="wind">3 м/с</string>
     <string name="wind_null"> </string>
-    <string name="edittext_town_hint">Введите название города</string>
+    <string name="town_edit_text_hint">Введите название города</string>
     <string name="textview_town_select_title">Выбор города</string>
     <string name="checkbox_wind_title">скорость ветра</string>
     <string name="checkbox_atmo_title">атмосферное давление</string>
@@ -27,10 +27,10 @@
     <string name="desc">any_image</string>
     <string name="button_go_url">посмотреть погоду в яндексе</string>
     <string-array name="list_of_towns">
-        <item>Москва, Россия</item>
-        <item>Лондон, Великобритания</item>
-        <item>Париж, Франция</item>
-        <item>Рим, Италия</item>
+        <item>Москва</item>
+        <item>Лондон</item>
+        <item>Париж</item>
+        <item>Рим</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
