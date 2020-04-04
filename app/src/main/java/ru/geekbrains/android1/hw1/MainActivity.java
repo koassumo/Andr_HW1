@@ -1,12 +1,15 @@
 package ru.geekbrains.android1.hw1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -65,5 +68,21 @@ public class MainActivity extends AppCompatActivity {
             if (isWindShow) windTextView.setVisibility(View.VISIBLE); else windTextView.setVisibility(View.GONE);
 
         }
+    }
+
+
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle saveInstanceState){
+        Toast.makeText(getApplicationContext(), "onSaveInstanceState()", Toast.LENGTH_SHORT).show();
+        saveInstanceState.putString(Constants.TOWN_DATA_KEY, townTextView.getText().toString());
+        super.onSaveInstanceState(saveInstanceState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle saveInstanceState){
+        super.onRestoreInstanceState(saveInstanceState);
+        townTextView.setText(saveInstanceState.getString(Constants.TOWN_DATA_KEY));
+        Toast.makeText(getApplicationContext(), "Повторный запуск!! - onRestoreInstanceState()", Toast.LENGTH_SHORT).show();
     }
 }
