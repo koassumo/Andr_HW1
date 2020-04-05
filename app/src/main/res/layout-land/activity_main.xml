@@ -59,13 +59,13 @@
                 android:id="@+id/pressureTextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/skyImageView"
-                app:layout_constraintTop_toTopOf="@+id/degreesTextView"
+                app:layout_constraintTop_toTopOf="@+id/temperatureTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/atmo_pressure" />
 
             <TextView
-                android:id="@+id/degreesTextView"
+                android:id="@+id/temperatureTextView"
                 app:layout_constraintBottom_toBottomOf="@+id/skyImageView"
                 app:layout_constraintEnd_toStartOf="@+id/skyImageView"
                 app:layout_constraintHorizontal_bias="0.7"
@@ -78,7 +78,7 @@
 
             <TextView
                 android:id="@+id/windTextView"
-                app:layout_constraintBottom_toBottomOf="@+id/degreesTextView"
+                app:layout_constraintBottom_toBottomOf="@+id/temperatureTextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.589"
                 app:layout_constraintStart_toEndOf="@+id/skyImageView"
