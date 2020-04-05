@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Погодное приложение</string>
-    <string name="region">Москва</string>
+    <string name="region">Moscow</string>
     <string name="region_en">Moscow, Russia</string>
-    <string name="temperature">+6</string>
+    <string name="temperature">+_</string>
     <string name="switch_to_english">english</string>
     <string name="switch_to_russian">русский</string>
     <string name="weather_map_show">показать на карте</string>
@@ -13,9 +13,9 @@
     <string name="plus_5_days">Через 5 дней</string>
     <string name="plus_6_days">Через 6 дней</string>
     <string name="plus_7_days">Через 7 дней</string>
-    <string name="atmo_pressure">720 мм/рт ст</string>
+    <string name="atmo_pressure">___ мм/рт ст</string>
     <string name="atmo_pressure_null"> </string>
-    <string name="wind">3 м/с</string>
+    <string name="wind">__ м/с</string>
     <string name="wind_null"> </string>
     <string name="town_edit_text_hint">Введите название города</string>
     <string name="textview_town_select_title">Выбор города</string>

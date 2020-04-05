@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread() {
             @Override
             public void run() {
+                degreesTextView.setText("0");
                 final JSONObject jsonObject = getJSONData(city);
                 if(jsonObject == null) {
                     handler.post(new Runnable() {
@@ -98,15 +99,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    JSONObject getJSONData(String city) {
-        try {
-            URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=5463564243fc4c25fd578bacc603b651");                      //здесь происходит замена %s в запросе, можно несколько %s и здесь подстановку через зяпятую
-//            URL url = new URL(String.format(OPEN_WEATHER_API_URL, city));                      //здесь происходит замена %s в запросе, можно несколько %s и здесь подстановку через зяпятую
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            //connection.addRequestProperty(KEY, OPEN_WEATHER_API_KEY);
-            Toast.makeText(getApplicationContext(), (String) url, Toast.LENGTH_LONG).show();
+    private static final String OPEN_WEATHER_API_KEY = "762ee61f52313fbd10a4eb54ae4d4de2";
+    private static final String OPEN_WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather?q=%s&units=metric";
+    private static final String KEY = "x-api-key";
 
-            // забираем JSON
+    JSONObject getJSONData(String city) {
+        degreesTextView.setText("5");
+        try {
+            URL url = new URL(String.format(OPEN_WEATHER_API_URL, city));
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.addRequestProperty(KEY, OPEN_WEATHER_API_KEY);
+
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             StringBuilder rawData = new StringBuilder(1024);
             String tempVariable;
@@ -117,9 +120,8 @@ public class MainActivity extends AppCompatActivity {
 
             reader.close();
 
-            // парсинг полученного JSON (в зависимости от получаемого формата можно также использовать JSONArray, JSONStringer  и др.
             JSONObject jsonObject = new JSONObject(rawData.toString());
-            if (jsonObject.getInt("cod") != 200) {
+            if(jsonObject.getInt("cod") != 200) {
                 return null;
             } else {
                 return jsonObject;
