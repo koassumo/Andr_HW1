@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
         initView();
         setOnGoOptionsSelectBtnClick();
+        updateWeatherData(townTextView.getText().toString());
+//        skyImageView.setImageResource(R.drawable.clear_sky_white);
     }
 
     private void initView() {
@@ -56,9 +58,8 @@ public class MainActivity extends AppCompatActivity {
         pressureTextView = findViewById(R.id.pressureTextView);
         windTextView = findViewById(R.id.windTextView);
         skyTexView = findViewById(R.id.skyTextView);
-        skyImageView = (ImageView) findViewById(R.id.skyImageView);
+        skyImageView = findViewById(R.id.skyImageView);
         goOptionsSelectActivityBtn = findViewById(R.id.goOptionsSelectActivityBtn);
-        updateWeatherData(townTextView.getText().toString());
     }
 
     private void updateWeatherData(final String city) {
@@ -133,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
         String icon = "";
 
         if(actualId == 800) {
+            skyImageView.setImageResource(R.drawable.clear_sky_white);
             long currentTime = new Date().getTime();
             if(currentTime >= sunrise && currentTime < sunset) {
                 icon = "\u2600";
@@ -144,32 +146,39 @@ public class MainActivity extends AppCompatActivity {
             switch (id) {
                 case 2: {
                     icon = getString(R.string.weather_thunder);
+                    skyImageView.setImageResource(R.drawable.thunder_white);
                     break;
                 }
                 case 3: {
                     icon = getString(R.string.weather_drizzle);
+                    skyImageView.setImageResource(R.drawable.rain_light_white);
                     break;
                 }
                 case 5: {
                     icon = getString(R.string.weather_rainy);
+                    skyImageView.setImageResource(R.drawable.rain_shower_white);
                     break;
                 }
                 case 6: {
                     icon = getString(R.string.weather_snowy);
+                    skyImageView.setImageResource(R.drawable.snow_white);
                     break;
                 }
                 case 7: {
                     icon = getString(R.string.weather_foggy);
+                    skyImageView.setImageResource(R.drawable.foggy_white);
                     break;
                 }
                 case 8: {
                     icon = "\u2601";
+                    skyImageView.setImageResource(R.drawable.cloud_broken_white);
                     // icon = getString(R.string.weather_cloudy);
                     break;
                 }
             }
         }
-        skyTexView.setText(icon);
+        icon = "\u2600";
+        skyTexView.setText(id);
     }
 
     private void setOnGoOptionsSelectBtnClick() {
@@ -197,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
             isWindShow = data.getBooleanExtra(Constants.WIND_IS_CHECKED_KEY, true);
             if (isPressureShow) pressureTextView.setVisibility(View.VISIBLE); else pressureTextView.setVisibility(View.GONE);
             if (isWindShow) windTextView.setVisibility(View.VISIBLE); else windTextView.setVisibility(View.GONE);
+            updateWeatherData(townTextView.getText().toString());
         }
         updateWeatherData(townTextView.getText().toString());
     }
