@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initView();
+        initFonts();
         setOnGoOptionsSelectBtnClick();
         updateWeatherData(townTextView.getText().toString());
 //        skyImageView.setImageResource(R.drawable.clear_sky_white);
@@ -60,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
         skyTexView = findViewById(R.id.skyTextView);
         skyImageView = findViewById(R.id.skyImageView);
         goOptionsSelectActivityBtn = findViewById(R.id.goOptionsSelectActivityBtn);
+    }
+
+    private void initFonts(){
+        weatherFont = Typeface.createFromAsset(getAssets(), "fonts/weather.ttf");
+        skyTexView.setTypeface(weatherFont);
     }
 
     private void updateWeatherData(final String city) {
@@ -129,56 +135,70 @@ public class MainActivity extends AppCompatActivity {
         windTextView.setText("100");
     }
 
-    private void setWeatherIcon(int actualId, long sunrise, long sunset) {
-        int id = actualId / 100;
+    private void setWeatherIcon(int id, long sunrise, long sunset) {
         String icon = "";
+        String skyPictureName = "snow_white";
 
-        if(actualId == 800) {
-            skyImageView.setImageResource(R.drawable.clear_sky_white);
-            long currentTime = new Date().getTime();
-            if(currentTime >= sunrise && currentTime < sunset) {
-                icon = "\u2600";
-                //icon = getString(R.string.weather_sunny);
-            } else {
-                icon = getString(R.string.weather_clear_night);
+        switch (id / 100) {
+            case 2: {
+                icon = getString(R.string.weather_thunder); skyPictureName = "thunder_white";
+                break;
             }
-        } else {
-            switch (id) {
-                case 2: {
-                    icon = getString(R.string.weather_thunder);
-                    skyImageView.setImageResource(R.drawable.thunder_white);
+            case 3: {
+                if (id < 302) {
+                    icon = getString(R.string.weather_drizzle); skyPictureName = "rain_light_white";
+                } else {
+                    icon = getString(R.string.weather_drizzle); skyPictureName = "rain_shower_white";
+                }
+                break;
+            }
+            case 5: {
+                if (id < 502) {
+                    icon = getString(R.string.weather_rainy); skyPictureName = "rain_light_white";
+                } else {
+                    icon = getString(R.string.weather_rainy); skyPictureName = "rain_shower_white";
+                }
+                break;
+            }
+            case 6: {
+                icon = getString(R.string.weather_snowy); skyPictureName = "snow_white";
+                break;
+            }
+            case 7: {
+                icon = getString(R.string.weather_foggy); skyPictureName = "foggy_white";
+                break;
+            }
+            case 8: {
+                if (id > 802) {
+                    icon = getString(R.string.weather_foggy); skyPictureName = "cloud_overcast_white";
                     break;
                 }
-                case 3: {
-                    icon = getString(R.string.weather_drizzle);
-                    skyImageView.setImageResource(R.drawable.rain_light_white);
+                if (id == 802) {
+                    icon = getString(R.string.weather_foggy); skyPictureName = "cloud_broken_white";
                     break;
                 }
-                case 5: {
-                    icon = getString(R.string.weather_rainy);
-                    skyImageView.setImageResource(R.drawable.rain_shower_white);
+                if (id == 801 ) {
+                    long currentTime = new Date().getTime();
+                    if(currentTime >= sunrise && currentTime < sunset) {
+                        icon = "\u2600"; skyPictureName = "cloud_few_white";
+                    } else {
+                        icon = getString(R.string.weather_clear_night); skyPictureName = "night_cloud_few_white";
+                    }
                     break;
                 }
-                case 6: {
-                    icon = getString(R.string.weather_snowy);
-                    skyImageView.setImageResource(R.drawable.snow_white);
-                    break;
-                }
-                case 7: {
-                    icon = getString(R.string.weather_foggy);
-                    skyImageView.setImageResource(R.drawable.foggy_white);
-                    break;
-                }
-                case 8: {
-                    icon = "\u2601";
-                    skyImageView.setImageResource(R.drawable.cloud_broken_white);
-                    // icon = getString(R.string.weather_cloudy);
-                    break;
+                if (id == 800 ) {
+                    long currentTime = new Date().getTime();
+                    if(currentTime >= sunrise && currentTime < sunset) {
+                        icon = "\u2600"; skyPictureName = "clear_sky_white";
+                    } else {
+                        icon = getString(R.string.weather_clear_night); skyPictureName = "night_clear_sky_white";
+                    }
                 }
             }
         }
-        icon = "\u2600";
-        skyTexView.setText(id);
+        skyTexView.setText(id + " ww " + icon);
+        int idPicture = getResources().getIdentifier(skyPictureName, "drawable", getPackageName());
+        skyImageView.setImageResource(idPicture);
     }
 
     private void setOnGoOptionsSelectBtnClick() {
