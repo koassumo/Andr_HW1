@@ -8,9 +8,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 class WeatherDataLoader {
-    private static final String OPEN_WEATHER_API_KEY = "56a1dd7fcdbc848539f0608906249b49";
+    private static final String OPEN_WEATHER_API_KEY = "5463564243fc4c25fd578bacc603b651";
     private static final String OPEN_WEATHER_API_URL =
-            "https://api.openweathermap.org/data/2.5/weather?q=%s&units=metric";
+            "https://api.openweathermap.org/data/2.5/forecast?q=%s&units=metric";
     private static final String KEY = "x-api-key";
 
     static JSONObject getJSONData(String city) {

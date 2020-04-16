@@ -12,13 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class DaySelectFragment extends Fragment {
-
+public class DaySelectFragment extends Fragment implements IObserver {
 
     private RecyclerView recyclerView;
-    private String[] listData = new String[] {"Сегодня", "Завтра", "Послезавтра", "Через 2 дня",
-            "Через 3 дня", "Через 4 дня", "Через 5 дней", "Через 6 дней", "Через 7 дней"};
-
+    private String[] listData;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,13 +26,18 @@ public class DaySelectFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        listData = getResources().getStringArray(R.array.list_days_array);
         recyclerView = view.findViewById(R.id.recyclerView);
         RecyclerDataAdapter adapter = new RecyclerDataAdapter(listData);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-
     }
 
 
+    @Override
+    public void updateText(String text) {
+        recyclerView.notifyAll();
+        //recyclerView.textView.setText(text);
+    }
 }

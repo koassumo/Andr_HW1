@@ -34,6 +34,21 @@
         <item>Рим</item>
     </string-array>
 
+    "Сегодня", "Завтра", "Послезавтра", "Через 2 дня",
+    "Через 3 дня", "Через 4 дня", "Через 5 дней", "Через 6 дней", "Через 7 дней"
+
+    <string-array name="list_days_array">
+        <item>Сегодня</item>
+        <item>Завтра</item>
+        <item>Послезавтра</item>
+        <item>Через 3 дня</item>
+        <item>Через 4 дня</item>
+        <item>Через 5 дней</item>
+        <item>Через 6 дней</item>
+        <item>Через 7 дней</item>
+    </string-array>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -48,4 +63,5 @@
     <string name="weather_snowy">&#xf01b;</string>
     <string name="weather_thunder">&#xf01e;</string>
     <string name="weather_drizzle">&#xf01c;</string>
+    <string name="quququququ">Сегодня</string>
 </resources>
